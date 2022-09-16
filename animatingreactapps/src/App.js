@@ -24,18 +24,12 @@ class App extends Component {
     return (
       <div className="App">
         <h1>React Animations</h1>
-        <button className="Button"
-          onClick={() =>
-            this.setState(prevState => ({ showBlock: !prevState.showBlock }))}>
+        <button className="Button" onClick={() =>
+          this.setState(prevState => ({ showBlock: !prevState.showBlock }))}>
           Toggle
         </button>
         <br />
-        {/* {this.state.showBlock ? */}
-        <Transition
-          in={this.state.showBlock}
-          timeout={1000}
-          mountOnEnter
-          unmoutOnExit>
+        <Transition in={this.state.showBlock} timeout={1000} mountOnEnter unmountOnExit>
           {state => (
             <div
               style={{
@@ -45,12 +39,21 @@ class App extends Component {
                 margin: "auto",
                 transition: 'opacity 1s ease-out',
                 opacity: state === 'exiting' ? 0 : 1
-              }}
-            />
+              }} />
           )}
         </Transition>
-        {/* </div> : null} */}
-        <Modal show={this.state.modalIsOpen} closed={this.closeModal} />
+        {/* bas tef2sa entered e5er shi */}
+        <Transition
+          mountOnEnter
+          unmountOnExit
+          in={this.state.modalIsOpen}
+          timeout={300}>
+          {state => (
+            <Modal show={state} closed={this.closeModal} />
+          )}
+        </Transition>
+
+
         <Backdrop show={this.state.modalIsOpen} />
         <button className="Button" onClick={this.showModal}>Open Modal</button>
         <h3>Animating Lists</h3>
@@ -61,3 +64,74 @@ class App extends Component {
 }
 
 export default App;
+
+
+
+
+
+
+
+
+// import React, { Component } from "react";
+
+// import "./App.css";
+// import Modal from "./components/Modal/Modal";
+// import Backdrop from "./components/Backdrop/Backdrop";
+// import List from "./components/List/List";
+// import Transition from "react-transition-group/cjs/Transition";
+
+// class App extends Component {
+//   state = {
+//     modalIsOpen: false,
+//     showBlock: false
+//   }
+
+//   showModal = () => {
+//     this.setState({ modalIsOpen: true });
+//   }
+
+//   closeModal = () => {
+//     this.setState({ modalIsOpen: false })
+//   }
+
+//   render() {
+//     return (
+//       <div className="App">
+//         <h1>React Animations</h1>
+//         <button className="Button" onClick={() =>
+//           this.setState(prevState => ({ showBlock: !prevState.showBlock }))}>
+//           Toggle
+//         </button>
+//         <br />
+//         {/* we use this transition to wrap what we want to animate */}
+//         <Transition
+//           in={this.state.showBlock}
+//           timeout={1000}
+//           mountOnEnter
+//           unmountOnExit>
+//           {/* {state => (console.log(state))} */}
+//           {/* state btkun ya exited ya exiting ya entering ya entered  */}
+//           {state => (
+//             <div
+//               style={{
+//                 backgroundColor: "red",
+//                 width: 100,
+//                 height: 100,
+//                 margin: "auto",
+//                 transition: 'opacity 1s ease-out',
+//                 opacity: state === 'exiting' ? 0 : 1
+//               }} />
+//           )}
+//         </Transition>
+//         {/* </div> : null} */}
+//         <Modal show={this.state.modalIsOpen} closed={this.closeModal} />
+//         <Backdrop show={this.state.modalIsOpen} />
+//         <button className="Button" onClick={this.showModal}>Open Modal</button>
+//         <h3>Animating Lists</h3>
+//         <List />
+//       </div>
+//     );
+//   }
+// }
+
+// export default App;

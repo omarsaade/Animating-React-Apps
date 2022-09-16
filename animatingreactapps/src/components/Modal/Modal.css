@@ -25,11 +25,11 @@
   transform: translateY(-100%);
 } */
 
-.ModelOpen {
+.ModalOpen {
   animation: openModal 0.4s ease-out forwards;
 }
 
-.ModelClosed {
+.ModalClosed {
   pointer-events: none;
   animation: closeModal 0.4s ease-out forwards;
 }
